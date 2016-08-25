@@ -1,0 +1,82 @@
+.simplecounsel-wrapper .title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.simplecounsel-wrapper .title-bar {
+  border-top: 5px solid #007000;
+  background-color: #fffbf5;
+}
+.simplecounsel-wrapper .list .search {
+  margin-bottom: 15px;
+}
+.simplecounsel-wrapper .list .list-header {
+  background-color: #007000;
+  padding: 13px;
+  vertical-align: middle;
+  height: 60px;
+}
+.simplecounsel-wrapper .list .list-header label {
+  color: #ffffff;
+}
+.simplecounsel-wrapper .list .list-header select {
+  width: 100px;
+  float: none;
+}
+.simplecounsel-wrapper .list .list-row table td:first-child {
+  width: 7%;
+  background-color: #f1f1f1;
+  text-align: center;
+  vertical-align: middle;
+}
+.simplecounsel-wrapper .list .list-row table td:last-child {
+  width: 93%;
+  padding: 20px 40px;
+}
+.simplecounsel-wrapper .list .list-row table td:last-child div {
+  padding: 5px;
+}
+.simplecounsel-wrapper .list .list-row table td:last-child .info {
+  font-size: 15px;
+}
+.simplecounsel-wrapper .list .list-row table td:last-child .info span {
+  color: #f65d57;
+  font-weight: bold;
+}
+.simplecounsel-wrapper .list .list-row table td:last-child .title {
+  font-size: 17px;
+  font-weight: bold;
+}
+.simplecounsel-wrapper .list .list-row table td:last-child .content {
+  font-size: 16px;
+  line-height: 30px;
+}
+.simplecounsel-wrapper .list .list-row table td:last-child .more {
+  font-size: 15px;
+  color: #007000;
+}
+.update,
+.delete,
+.cancel,
+.edit {
+  color: #d7d7d7;
+}
+@media (min-width: 970px) {
+  .best-image {
+    height: 245px;
+    margin: auto 0;
+  }
+}
+@media (max-width: 767px) {
+  .simplecounsel-wrapper .list .list-row table td:last-child {
+    padding: 5px;
+  }
+  .list-header label {
+    width: 41px;
+    font-size: 10px;
+  }
+  .list-header select {
+    width: 80px!important;
+    float: none;
+  }
+}

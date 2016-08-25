@@ -1,0 +1,48 @@
+<div id="{{ post_id }}-comment-list">
+    {% for comment in simpleCounsel.getComments(post_id) %}
+    <div id="{{ comment.id }}-item" class="list-group-item">
+        <div class="col-md-10 name">
+            <strong>{{ comment.user.name|raw }}</strong>
+        </div>
+        <div class="col-md-2">
+            {{ comment.updated_at|date("Y-m-d") }}
+        </div>
+        <div class="content">
+            {{ comment.content|nl2br }}
+        </div>
+        {% if user.id == comment.user_id %}
+            <div class="actions">
+                <a href="javascript:;"
+                   class="edit"
+                   data-request="onUpdateComment"
+                   data-request-data="comment_id: {{ comment.id }}, mode: 'edit'"
+                   data-request-update="'{{ __SELF__ }}::commentedit': '#{{ comment.id }}-item'">
+                    수정
+                </a>
+            </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+<!--or user.id == simpleCounsel.getPost(post_id).user_id-->
+{% if user.groups[0].id <= 2 and user.groups[0].id != 0 %}
+{{ form_open() }}
+<div class="text">
+<textarea
+        rows="5"
+        name="content"
+        class="form-control"
+        ></textarea>
+</div>
+<div class="actions">
+    <a
+            href="javascript:;"
+            data-request="{{ __SELF__ }}::onSaveComment"
+            data-request-data="mode: 'save', post_id: {{ post_id }}"
+            data-request-update="'{{ __SELF__ }}::commentlist': '#{{ post_id }}-comment'"
+            class="save">
+        댓글쓰기
+    </a>
+</div>
+{% endif %}
+{{ form_close() }}

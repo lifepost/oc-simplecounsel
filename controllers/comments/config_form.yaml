@@ -1,0 +1,28 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: teb.simplecounsel::lang.menu.name
+
+# Model Form Field configuration
+form: @/plugins/teb/simplecounsel/models/comment/fields.yaml
+
+# Model Class name
+modelClass: Teb\SimpleCounsel\Models\Comment
+
+# Default redirect location
+defaultRedirect: teb/simplecounsel/comments
+
+# Update page
+update:
+    title: teb.simplecounsel::lang.form.update
+    redirect: teb/simplecounsel/comments
+    redirectClose: teb/simplecounsel/comments
+    flash-save: teb.simplecounsel::lang.form.flashupdate
+    flash-delete: teb.simplecounsel::lang.form.flashdelete
+
+# Preview page
+preview:
+    title: teb.simplecounsel::lang.form.preview
+

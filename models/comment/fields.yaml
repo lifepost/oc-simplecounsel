@@ -1,0 +1,8 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    content:
+        label: teb.simplecounsel::lang.comment.content
+        type: textarea

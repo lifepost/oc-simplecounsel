@@ -1,0 +1,32 @@
+# ===================================
+#  List Behavior Config
+# ===================================
+
+# Model List Column configuration
+list: @/plugins/teb/simplecounsel/models/comment/columns.yaml
+
+# Model Class name
+modelClass: Teb\SimpleCounsel\Models\Comment
+
+# List Title
+title: teb.simplecounsel::lang.form.comments
+
+# Link URL for each record
+recordUrl: teb/simplecounsel/comments/update/:id
+
+# Message to display if the list is empty
+noRecordsMessage: backend::lang.list.no_records
+
+# Records to display per page
+recordsPerPage: 10
+
+showTree: false
+
+# Toolbar widget configuration
+toolbar:
+    # Partial for toolbar buttons
+    buttons: list_toolbar
+
+    # Search widget configuration
+    search:
+        prompt: backend::lang.list.search_prompt

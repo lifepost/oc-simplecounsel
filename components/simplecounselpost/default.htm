@@ -1,0 +1,26 @@
+<div class="teb-simplecounsel">
+
+    {% flash %}
+    <div class="alert alert-{{ type == 'error' ? 'danger' : type }}">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    </div>
+    {% endflash %}
+
+    <p>&larr; <a href="{{ '/simplecounsel' }}">목록으로 돌아가기</a></p>
+    {% if postId and user.id == post.user_id %}
+        {% if user %}
+            {% partial "@updateform" %}
+        {% else %}
+            {% if checkPassword %}
+                {% partial "@updateform" %}
+            {% else %}
+                {% partial "@checkpassword" %}
+            {% endif %}
+        {% endif %}
+    {% else %}
+
+    {% partial "@createform" %}
+
+    {% endif %}
+</div>

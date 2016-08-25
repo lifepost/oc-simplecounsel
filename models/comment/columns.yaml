@@ -1,0 +1,33 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+  id:
+    label: teb.simplecounsel::lang.comment.id
+    searchable: false
+    width: 10%
+
+  title:
+    label: teb.simplecounsel::lang.comment.post_title
+    relation: post
+    select: title
+    searchable: false
+    width: 30%
+
+  content:
+    label: teb.simplecounsel::lang.comments.content
+    searchable: true
+    width: 40%
+
+  user_name:
+    label: teb.simplecounsel::lang.posts.user_name
+    relation: user
+    select: name
+    searchable: true
+    width: 10%
+
+  created_at:
+    label: teb.simplecounsel::lang.posts.created_at
+    searchable: true
+    width: 10%

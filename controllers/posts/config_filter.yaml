@@ -1,0 +1,19 @@
+# ===================================
+# Filter Scope Definitions
+# ===================================
+
+scopes:
+
+    groups:
+
+        # Filter name
+        label: teb.simplecounsel::lang.category.label
+
+        # Model Class name
+        modelClass: Teb\SimpleCounsel\Models\Category
+
+        # Model attribute to display for the name
+        nameFrom: name
+
+        # Filter scope
+        scope: filterByCategory

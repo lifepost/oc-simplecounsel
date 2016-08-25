@@ -1,0 +1,23 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+
+    category:
+        label: teb.simplecounsel::lang.post.category
+        type: relation
+
+    title:
+        label: teb.simplecounsel::lang.post.title
+
+    content:
+        label: teb.simplecounsel::lang.post.content
+        type: textarea
+
+    is_notice:
+        label: teb.simplecounsel::lang.post.is_notice
+        type: checkbox
+
+    order_no:
+        label: teb.simplecounsel::lang.post.order_no

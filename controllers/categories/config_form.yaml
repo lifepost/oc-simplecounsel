@@ -1,0 +1,35 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: teb.simplecounsel::lang.menu.name
+
+# Model Form Field configuration
+form: @/plugins/teb/simplecounsel/models/category/fields.yaml
+
+# Model Class name
+modelClass: Teb\SimpleCounsel\Models\Category
+
+# Default redirect location
+defaultRedirect: teb/simplecounsel/categories
+
+# Create page
+create:
+    title: teb.simplecounsel::lang.form.create
+    redirect: teb/simplecounsel/categories/update/:id
+    redirectClose: teb/simplecounsel/categories
+    flash-save: teb.simplecounsel::lang.form.flashcreate
+
+# Update page
+update:
+    title: teb.simplecounsel::lang.form.update
+    redirect: teb/simplecounsel/categories
+    redirectClose: teb/simplecounsel/categories
+    flash-save: teb.simplecounsel::lang.form.flashupdate
+    flash-delete: teb.simplecounsel::lang.form.flashdelete
+
+# Preview page
+preview:
+    title: teb.simplecounsel::lang.form.preview
+

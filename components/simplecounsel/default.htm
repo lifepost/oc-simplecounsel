@@ -1,0 +1,113 @@
+<div class="simplecounsel-wrapper">
+    <div class="title" style="">간편상담</div>
+
+        <div class="list">
+            <div class="search">
+                <div class="row">
+                    {{ form_open({ method: 'get' })}}
+                    <div class="col-md-2 col-md-offset-6">
+                        <div class="form-group">
+                            <select class="form-control" name="search_category">
+                                {% set option_value = "" %}
+                                <option value="" {% if search_category == option_value %} selected {% endif %}>전체</option>
+                                {% set option_value = "user" %}
+                                <option value="user" {% if search_category == option_value %} selected {% endif %}>작성자</option>
+                                {% set option_value = "title" %}
+                                <option value="title" {% if search_category == option_value %} selected {% endif %}>제목</option>
+                                {% set option_value = "content" %}
+                                <option value="content" {% if search_category == option_value %} selected {% endif %}>내용</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <input type="text" name="search_string" class="form-control" placeholder="검색어를 입력하세요." value="{{ input('search_string')|e }}">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit">검색</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="list-header">
+                <div class="input-group pull-right">
+                    <label class="control-label" for="own_disease">카테고리: </label>&nbsp;
+                    <select class="form-control" name="own_disease" id="own_disease" onchange="submit();" style="width: 100px; float: none;">
+                        <option value="">전체</option>
+                        {% for category in simpleCounsel.getCategories %}
+                        <option value="{{ category.id }}" {% if own_disease == category.id %} selected {% endif %}>{{ category.name }}</option>
+                        {% endfor %}
+                    </select>&nbsp;&nbsp;
+                    <label class="control-label" for="own_disease">답변상태: </label>&nbsp;
+                    <select class="form-control" name="answer_status" id="answer_status" onchange="submit();" style="width: 100px; float: none;">
+                        <option value="">전체</option>
+                        <option value="1" {% if answer_status == 1 %} selected {% endif %}>답변중</option>
+                        <option value="2" {% if answer_status == 2 %} selected {% endif %}>답변완료</option>
+                    </select>
+                </div>
+                {{ form_close() }}
+            </div>
+            <div class="list-row">
+                <table class="table">
+                    {% for post in simpleCounsel.getPosts %}
+                    <tr>
+                        <td>{% if post.is_notice == '1' %} 공지 {% else %} {{ simpleCounsel.getPosts.total - ((simpleCounsel.getPage - 1) * 5) - loop.index + 1}} {% endif %}</td>
+                        <td>
+                            <div class="row info">
+                                <div class="col-md-6">
+                                    <span>작성자</span>&nbsp;&nbsp;
+                                    {% if post.user.name %}
+                                        {{ simpleCounsel.masking(post.user.name) }}
+                                    {% else %}
+                                        {{ simpleCounsel.masking(post.user_name) }}
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6">
+                                    <span>작성일</span>&nbsp;&nbsp; {{ post.created_at | date("Y-m-d") }}
+                                </div>
+                                <div class="col-md-6">
+                                    <span>카테고리</span>&nbsp;&nbsp; {{ post.category.name }}
+                                </div>
+                                <div class="col-md-6">
+                                    <span>답변상태</span>&nbsp;&nbsp; {% if simpleCounsel.getComments(post.id)|length > 0 %} 답변완료 {% else %} 답변중 {% endif %}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 title">{{ post.title }}</div>
+                                <div id="{{ post.id }}-content-short" class="col-md-12 content" style="display: block;">{{ post.content|length > 120 ? post.content|slice(0, 120) ~ '...' : post.content}}</div>
+                                <div class="col-md-12">
+                                    <a href="javascript:void(0)" onclick="showContent('{{ post.id }}');" class="more" id="{{ post.id }}-more">...더보기</a>
+                                    <div id="{{ post.id }}-content" class="content" style="display:none;">
+                                        {{ post.content | nl2br }}
+                                        <div class="comment">
+                                            <div id="{{ post.id }}-comment">
+                                                {% partial '@commentlist' post_id=post.id user_id=user.id %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                {% if user.id == post.user_id %}
+                                <div class="col-md-12">
+                                    <a href="/simplecounsel/{{post.id}}/update"><button class="btn btn-default pull-right">수정</button></a>
+                                </div>
+                                {% endif %}
+                                <div class="col-md-12 content-more">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="pull-right">
+                <a href="{{ postPage }}"><button class="btn btn-primary">상담 작성하기</button></a>
+            </div>
+
+            <div class="clearfix"></div>
+            <nav class="text-center">
+            {{ simpleCounsel.getPosts.appends({search_category: search_category, search_string: search_string, own_disease: own_disease, answer_status: answer_status}).render | raw }}
+            </nav>
+        </div>
+    </div>
+</div>

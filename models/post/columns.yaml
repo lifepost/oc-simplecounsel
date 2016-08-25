@@ -1,0 +1,41 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+
+  id:
+    label: teb.simplecounsel::lang.posts.id
+    searchable: false
+
+  category:
+    label: teb.simplecounsel::lang.posts.category_id
+    relation: category
+    select: name
+    searchable: true
+
+  title:
+    label: teb.simplecounsel::lang.posts.title
+    searchable: true
+
+  is_notice:
+    label: teb.simplecounsel::lang.posts.is_notice
+    searchable: true
+
+  user:
+    label: teb.simplecounsel::lang.posts.user_name
+    relation: user
+    select: name
+    searchable: true
+
+  user_name:
+    label: teb.simplecounsel::lang.posts.nonmember_name
+    searchable: true
+
+  user_email:
+    label: teb.simplecounsel::lang.posts.nonmember_email
+    searchable: true
+
+  created_at:
+    label: teb.simplecounsel::lang.posts.created_at
+    searchable: true

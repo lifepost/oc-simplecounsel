@@ -1,0 +1,17 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+
+  id:
+    label: teb.simplecounsel::lang.categories.id
+    searchable: false
+
+  name:
+    label: teb.simplecounsel::lang.categories.name
+    searchable: true
+
+  order_no:
+    label: teb.simplecounsel::lang.categories.order_no
+    searchable: false

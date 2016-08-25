@@ -1,0 +1,36 @@
+{{ form_open() }}
+    <div class="col-md-10">
+        <strong>{{ comment.user.name }}</strong>
+    </div>
+    <div class="col-md-2">
+        {{ comment.updated_at|date("Y-m-d") }}
+    </div>
+    <textarea name="content" rows="4" class="form-control">{{ comment.content }}</textarea>
+    <a
+            href="javascript:;"
+            data-request="{{ __SELF__ }}::onUpdateComment"
+            data-request-data="comment_id: {{ comment.id }}, user_id: {{ user.id }}, mode: 'update'"
+            data-request-update="'{{ __SELF__ }}::commentlist': '#{{ post_id }}-comment'"
+            class="update">
+        수정
+    </a>
+    &nbsp;
+    <a
+            href="javascript:;"
+            data-request="{{ __SELF__ }}::onUpdateComment"
+            data-request-data="comment_id: {{ comment.id }}, mode: 'delete'"
+            data-request-update="'{{ __SELF__ }}::commentlist': '#{{ post_id }}-comment'"
+            data-request-confirm="댓글을 삭제하시겠습니까?"
+            class="delete">
+        삭제
+    </a>
+    &nbsp;
+    <a
+            href="javascript:;"
+            data-request="{{ __SELF__ }}::onUpdateComment"
+            data-request-data="comment_id: {{ comment.id }}, mode: 'cancel'"
+            data-request-update="'{{ __SELF__ }}::commentlist': '#{{ post_id }}-comment'"
+            class="cancel">
+        취소
+    </a>
+{{ form_close() }}

@@ -1,0 +1,10 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: teb.simplecounsel::lang.category.name
+
+    order_no:
+        label: teb.simplecounsel::lang.category.order_no
